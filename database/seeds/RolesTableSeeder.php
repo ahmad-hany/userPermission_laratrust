@@ -23,7 +23,7 @@ class RolesTableSeeder extends Seeder
             'description' => 'Can access this department only in the website'
         ]);
 
-        $Admin = \App\Role::create([
+        $admin = \App\Role::create([
             'name' => 'admin',
             'display_name' => 'Admin',
             'description' => 'Can access his profile in the website'

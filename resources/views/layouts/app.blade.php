@@ -55,6 +55,28 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (auth()->user()->hasRole('super_admin'))
+                                        <a class="dropdown-item" href="{{ route('subAdmins.index') }}">
+                                            {{ "Sub Admins" }}
+                                        </a>
+                                    <a class="dropdown-item" href="{{ route('admins.index') }}">
+                                            {{ "Admins" }}
+                                        </a>
+                                        <a class="dropdown-item">
+                                            {{ "Profile" }}
+                                        </a>    
+                                    @elseif (auth()->user()->hasRole('sub_admin'))
+                                        <a class="dropdown-item" href="{{ route('admins.index') }}">
+                                            {{ "Admins" }}
+                                        </a>
+                                        <a class="dropdown-item">
+                                            {{ "Profile" }}
+                                        </a>   
+                                    @else 
+                                        <a class="dropdown-item">
+                                            {{ "Profile" }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
